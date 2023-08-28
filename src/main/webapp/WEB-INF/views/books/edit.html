@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Изменение книги</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/main.css"/>
+</head>
+<body>
+<div class="container head">
+  <div class="row center-block">
+    <div class="col gy-3">
+      <div class="h1 text-center">Изменение книги</div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="container body center-block">
+  <div>
+    <form th:method="patch" th:action="@{/books/{id}(id=${book.getBookId()})}" th:object="${book}">
+      <div class="row">
+        <div class="col-3">
+          <label from="name">Введите название книги</label>
+        </div>
+        <input type="text" th:field="*{nameBook}" id="name">
+        <div class="text-danger" th:if="${#fields.hasErrors('nameBook')}" th:errors="*{nameBook}">Message errors</div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <label from="name">Введите автора</label>
+        </div>
+        <input type="text" th:field="*{author}" id="author">
+        <div class="text-danger" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Message errors</div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <label from="name">Введите год издания</label>
+        </div>
+        <input type="text" th:field="*{yearEditions}" id="yearEditions">
+        <div class="text-danger" th:if="${#fields.hasErrors('yearEditions')}" th:errors="*{yearEditions}">Message errors</div>
+      </div>
+      <hr>
+      <div class="row">
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
